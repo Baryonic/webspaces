@@ -1,0 +1,50 @@
+p{
+    color: darkblue;
+}
+
+body { background-color: pink;}
+
+.stylish_p_class_01{
+    color: #ff0000;
+}
+
+#stylish_p_01{
+    font-size: 20px;
+    font-style: italic;
+}
+.div_class_01{
+    width: 400px;
+    height: 70px;
+    background-color: #bbbb33;
+}
+
+a:link{color: rebeccapurple;}
+a:visited{color: brown;}
+a:hover{color: #000000;}
+a:active{color: mediumspringgreen;}
+
+img:hover{filter:blur(3px)}
+
+/*elementos <a> que se encuentren dentro de <nav> */
+nav a{
+    background-color: red;
+}
+/*elementos <a> que sean hijos de <nav>*/
+nav > a{
+    background-color: green;
+}
+/*elementos <a> que se encuentren como herederos de elementos <div>*/
+nav  div  a{
+    background-color: blue;
+}
+/*elementos <a>, hijos de <div> y a su vez hijos de <nav>*/
+nav > div > a{
+    background-color: yellow;
+}
+#caja_01{
+    width: 200px;
+    height: 70px;
+    color: #ff0bb0;
+    background-color: #000000;
+    overflow: auto;
+}

@@ -1,0 +1,59 @@
+div {
+    border: 1px solid black;
+    display: auto;
+    float: left;
+    margin: 5px;
+    padding: 5px;
+}
+button {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+    display: auto;
+    float : left;
+}
+#button_01_id{
+    background-color: red;
+}
+#button_02_id{
+    background-color: red;
+}
+#button_03_id{
+    background-color: orange;
+}
+#button_04_id{
+    background-color: orange;
+}
+#button_05_id{
+    background-color: orange    ;
+}
+#button_06_id{
+    background-color: orange;
+}
+#button_07_id{
+    background-color: orange;
+}
+#button_08_id{
+    background-color: green;
+}
+#button_09_id{
+    background-color: greenyellow;
+}
+#button_10_id{
+    background-color: lightcyan;
+}
+#button_11_id{
+    background-color: lightcyan;
+}
+#button_12_id{
+    background-color: lightcyan;
+}
+#button_13_id{
+    background-color: lightcyan;
+}
+#button_14_id{
+    background-color: lightcyan;
+}
+#button_15_id{
+    background-color: lightcyan;
+}
