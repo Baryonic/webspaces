@@ -48,3 +48,18 @@ nav > div > a{
     background-color: #000000;
     overflow: auto;
 }
+div{
+    border: 2px solid #000000;
+    position: relative;
+    float: left ;
+}
+a{
+    font-weight: bold;
+    color: cyan;
+    text-shadow: 1px 1px 1px green;
+    transition: all 0.3s ease;
+    transform: translateY(2px);
+    filter: brightness(0.9);
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+
+}
