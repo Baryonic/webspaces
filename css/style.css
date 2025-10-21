@@ -2,7 +2,7 @@ p{
     color: darkblue;
 }
 
-body { background-color: pink;}
+body { background-color: lightgrey}
 
 .stylish_p_class_01{
     color: #ff0000;
@@ -52,14 +52,16 @@ div{
     border: 2px solid #000000;
     position: relative;
     float: left ;
+    margin: 5px;
+    padding: 5px;
 }
 a{
     font-weight: bold;
     color: cyan;
-    text-shadow: 1px 1px 1px green;
+    font-size:large ;
     transition: all 0.3s ease;
     transform: translateY(2px);
     filter: brightness(0.9);
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family:"Dancing Script", sans-serif;
 
 }
