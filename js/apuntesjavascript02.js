@@ -291,7 +291,7 @@ function fbutton_16() {
     var out = document.getElementById('fake_console_id');
     if (out) {
         if (value !== null) {
-            out.textContent = 'Cookie leída: ' + cookieName + ' = ' + value;
+            out.textContent = 'Cookie leída: ' + cookieName + ' = ' + value ;
         } else {
             out.textContent = out.textContent +' ________ No se encontró la cookie: ' + cookieName + '. document.cookie = ' + document.cookie;
         }
@@ -311,6 +311,7 @@ function setCookie(name, value, days) {
 }
 
 function leerCookie(nombre) {
+    console.log("leerCookie(): leyendo cookie:", nombre);
     var nameEQ = nombre + '=';
     var parts = document.cookie ? document.cookie.split(';') : [];
     for (var i = 0; i < parts.length; i++) {
@@ -319,6 +320,7 @@ function leerCookie(nombre) {
             return decodeURIComponent(c.substring(nameEQ.length));
         }
     }
+    console.log(parts)
     return null;
 }
 
