@@ -184,7 +184,7 @@
                             los números num1 y num2.
                             <b>Math.sqrt(número)</b>, devuelve la raíz cuadrada del número pasado por parámetro.
                             <b>Math.ceil(número)</b>, devuelve el número pasado por parámetro a su entero superior.
-                            <b>Math.floor(número)</b>, devuelve el número pasado por parámetro a su entero inferior.+
+                            <b>Math.floor(número)</b>, devuelve el número pasado por parámetro a su entero inferior.
                             <b>Math.round(número)</b>, devuelve el entero más próximo al número pasado por parámetro.
                             <b>Math.exp(número)</b>, devuelve el resultado de elevar el número E al exponente indicado
                             en el
@@ -318,48 +318,97 @@
                             <b>navigator.vendorSub</b>: nos indica la versión del vendedor (si tiene).
                         </p>
                         <p class="p_apuntes_class">
-                            WINDOW.OPEN
-                            left: indica el espacio de separación con el margen izquierdo de la pantalla.
+                            <b>WINDOW.OPEN</b>
+                            <b>left</b>: indica el espacio de separación con el margen izquierdo de la pantalla.
 
-                            top: indica el espacio de separación con el margen superior de la pantalla.
+                            <b>top</b>: indica el espacio de separación con el margen superior de la pantalla.
 
-                            height: indica la altura que tendrá la ventana nueva.
+                            <b>height</b>: indica la altura que tendrá la ventana nueva.
 
-                            width: indica la anchura que tendrá la ventana nueva.
+                            <b>width</b>: indica la anchura que tendrá la ventana nueva.
 
-                            menubar: si pasamos un valor “yes” la nueva ventana tendrá la barra de menú de navegador.
+                            <b>menubar</b>: si pasamos un valor “yes” la nueva ventana tendrá la barra de menú de
+                            navegador.
 
-                            toolbar: si pasamos un valor “yes” la nueva ventana tendrá la barra de herramientas (atrás,
+                            <b>toolbar</b>: si pasamos un valor “yes” la nueva ventana tendrá la barra de herramientas
+                            (atrás,
                             adelante, refrescar, parar…).
 
-                            location: si pasamos un valor “yes” la nueva ventana tendrá la barra de dirección.
+                            <b>location</b>: si pasamos un valor “yes” la nueva ventana tendrá la barra de dirección.
 
-                            status: si pasamos un valor “yes” la nueva ventana tendrá una barra inferior de estatu
+                            <b>status</b>: si pasamos un valor “yes” la nueva ventana tendrá una barra inferior de
+                            estatu
                         </p>
                         <p class="p_apuntes_class">
-                            cookie se compone de los siguientes elementos:
+                            <b>cookie</b> se compone de los siguientes elementos:
 
-                            nombre y valor: el nombre indica cómo se llamará la cookie y el valor indica que tiene la
+                            <b>nombre y valor</b>: el nombre indica cómo se llamará la cookie y el valor indica que
+                            tiene la
                             cookie.
 
-                            fecha de expiración: se puede asignar una fecha de expiración que indicará hasta cuándo está
+                            <b>fecha de expiración</b>: se puede asignar una fecha de expiración que indicará hasta
+                            cuándo está
                             vigente dicha cookie; en caso de no indicar fecha, solo será vigente mientras el navegador
                             esté abierto, luego se borrará; esta fecha tiene un formato concreto que podremos dar
                             gracias a la función “toGMTString” de la clase “date”.
 
-                            Dominio: indica el dominio para el cual será válida la cookie, hay que tener en cuenta que
+                            <b>Dominio</b>: indica el dominio para el cual será válida la cookie, hay que tener en
+                            cuenta que
                             se trata de URL completas (como, por ejemplo, www.ejemplo.com), con lo que la cookie no
                             valdrá para otros dominios dentro de la página como podría ser alumnos.ejemplo.com.
 
-                            Path: indica la ruta dentro del dominio a la cual afecta la cookie; si no se indica, por
+                            <b>Path</b>: indica la ruta dentro del dominio a la cual afecta la cookie; si no se indica,
+                            por
                             defecto coge la ruta raíz “/” aunque podemos indicarle, por ejemplo, “/intranet/alumnos” y
                             la cookie solo tendrá validez en las páginas dentro de esa ruta.
 
-                            Borrar:
+                            <b>Borrar</b>:
 
                             No se puede borrar una cookie directamente desde JavaScript para eliminarla debemos volver a
                             crearla con una fecha de expiración anterior a la fecha y así el navegador detectará que ha
                             expirado y la borrará.
+                        </p>
+                        <p class="p_apuntes_class">
+                            <b>setTimeout</b> y <b>setInterval</b>. Estas funciones nos permiten definir un espacio de
+                            tiempo
+                            entre la invocación de la mismas hasta la ejecución del código
+
+                        </p>
+                        <p class="p_apuntes_class">
+                            <b>XMLHttpRequest</b> son:
+                            <b>onreadystatechange</b>: propiedad que contiene el nombre de la función que se ejecutará al
+                            cambiar el estado del objeto.
+                            <b>readyState</b>: almacena el estado actual del objeto, este valor puede ser:
+                            0 No inicializado.
+                            1 Cargando (inicio).
+                            2 Cargando (ya tenemos cabecera y estatus.)
+                            3 Interactivo (tenemos datos parciales).
+                            4 Completado.
+                            <b>responseText</b>: almacena la cadena devuelta por el servidor.
+                            <b>responseXML</b>: almacena la cadena devuelta por el servidor con la diferencia de que esta en
+                            XML.
+                            Los métodos del objeto <b>XMLHttpRequest</b> son:
+
+                            <b>open</b>: abre un canal asíncrono con el servidor. Recibe varios parámetros como veremos a
+                            continuación:
+                            <b>open(metodo, url, [asincrono], [usuario], [clave])</b>
+                            <b>método</b>, es el tipo de petición http, puede ser <b>GET</b> o <b>POST</b>.
+                            <b>URL</b>, el url a la que se realiza la petición http.
+                            <b>asíncrono</b>, (opcional) indicamos con un “false” que la petición se haga de modo síncrono en
+                            vez de asíncrono.
+                            <b>usuario</b>, (opcional) usuario para la autentificación del url.
+                            <b>clave</b>, (opcional) clave para la autentificación del url.
+                            <b>send</b>: realiza la petición http, hasta que no se llama a este método no comienza la conexión.
+                            Recibe un parámetro por defecto con valor “null” que indica los posibles parámetros
+                            asociados al envío de la petición.
+                            <b>send(datos)</b>
+                            <b>abort</b>: detiene la petición actual.
+                            <b>abort()</b>
+                            <b>getAllResponseHeaders</b>: devuelve una cadena con las cabeceras de respuesta del servidor.
+                            <b>getResponseHeader</b>: recibe como parámetro el nombre de una cabecera y devuelve una cadena con
+                            el contenido de dicha cabecera.
+                            <b>setRequestHeader</b>: recibe dos parámetros: el primero indica el nombre de una cabecera y, el
+                            segundo, el valor que deseamos darle. Se debe llamar antes al método “open”.
                         </p>
                     </div>
 </body>

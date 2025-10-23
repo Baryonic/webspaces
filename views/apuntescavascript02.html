@@ -3,7 +3,7 @@
 
 <head>
     <script type="text/javascript" src="../js/apuntesjavascript02.js"></script>
-    <link rel="stylesheet" href="../css/style_js_02.css" media="all">
+    <link rel="stylesheet" href="../css/style_js_02.css" id="style_js_02_id" media="all">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Apuntes Javascript 02</title>
@@ -57,7 +57,15 @@
     </div>
 
     <div>
-        <p id="p_03_id"> document.getElementById("p_03_id");--------------</p>
+        <p id="p_03_id"> document.getElementById("p_03_id");-------------- this.style.backgrounfColor="#"</p>
+        <p onmouseover="this.style.backgroundColor='#ffddee'" onmouseout="this.style.backgroundColor='#ffffff'">
+            Los principales atributos y métodos de "window".
+            Los principales atributos y métodos de "document".
+            Crear eventos dinámicamente.
+            Crear cookies y trabajar con ellas.
+            Crear temporizadores.
+            Interpretar y controlar errores de JavaScript.
+        </p>
     </div>
 
     <div>
@@ -67,16 +75,16 @@
         <button id="button_14_id" onclick="fbutton_14();" value="button_14">window.print</button>
         <button id="button_15_id" onclick="fbutton_15();" value="button_15">window.scrollTo</button>
     </div>
-       <div>
+    <div>
 
         <button id="button_16_id" onclick="fbutton_16();" value="button_16">cookies</button>
-        <button id="button_17_id" onclick="fbutton_17();" value="button_17">button 13</button>
-        <button id="button_18_id" onclick="fbutton_18();" value="button_18">button 14</button>
-        <button id="button_19_id" onclick="fbutton_19();" value="button_19">button 15</button>
+        <button id="button_17_id" onclick="fbutton_17();" value="button_17">setTimeout</button>
+        <button id="button_18_id" onclick="fbutton_18();" value="button_18">setInterval</button>
+        <button id="button_19_id" onclick="fbutton_19();" value="button_19">clearInterval</button>
     </div>
-       <div>
-        <button id="button_20_id" onclick="fbutton_20();" value="button_20">20</button>
-        <button id="button_21_id" onclick="fbutton_21();" value="button_21">21</button>
+    <div>
+        <button id="button_20_id" onclick="fbutton_20();" value="button_20">try catch error</button>
+        <button id="button_21_id" onclick="fbutton_21();" value="button_21">document.getElementById('style_js_02_id').href = "../css/style_js_02.css"</button>
         <button id="button_22_id" onclick="fbutton_22();" value="button_22">22</button>
         <button id="button_23_id" onclick="fbutton_23();" value="button_23">23</button>
     </div>

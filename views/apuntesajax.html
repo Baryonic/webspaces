@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_ajax.css" media="all">
+    <script src="../js/apuntesajax.js"></script>
+    <title>Document</title>
+</head>
+<body onload="finit()">
+    <h1>
+        apuntes AJAX
+    </h1>
+    <div>
+        <a href="../index.html">INDEX</a>
+    </div>
+    <div id="fake_console_id">
+        fake console
+    </div>
+    <div>
+        div1
+    </div>
+            <a href="#" onclick="cargar(1)">Cargar HTML 1</a><br /><br/>
+        <a href="#" onclick="cargar(2)">Cargar HTML 2</a><br/>
+        <br/><br/>
+        <div style="width:400px;height:400px;border:1px solid #FC0" id="caja">
+            Aquí se cargarán los textos desde AJAX
+        </div>
+        <div>
+            <a href="#" onclick="cargarTiempo()">Cargar tiempo desde XML</a>
+        <div style="width:400px;height:400px; position:relative;" id="caja">
+            Aquí se cargarán los textos desde AJAX
+        </div>
+        </div>
+</body>
+</html>

@@ -258,20 +258,20 @@ function fbutton_11() {
     cerrarVentana();
 }
 function fbutton_12() {
-     if (window.confirm("¿Quiere cambiar el color de fondo a #ffeedd?")) { 
-	            document.body.style.backgroundColor = "#ffeedd";
-	        }
+    if (window.confirm("¿Quiere cambiar el color de fondo a #ffeedd?")) {
+        document.body.style.backgroundColor = "#ffeedd";
+    }
 }
 //revisar
 function fbutton_13() {
-    window.resizeTo("500px","500px");
-    window.moveTo(50,50);
+    window.resizeTo("500px", "500px");
+    window.moveTo(50, 50);
 }
 function fbutton_14() {
     window.print();
 }
 function fbutton_15() {
-    window.scrollTo(ancho,alto);
+    window.scrollTo(ancho, alto);
 }
 function fbutton_16() {
     // Crear y leer una cookie de forma robusta
@@ -291,9 +291,9 @@ function fbutton_16() {
     var out = document.getElementById('fake_console_id');
     if (out) {
         if (value !== null) {
-            out.textContent = 'Cookie leída: ' + cookieName + ' = ' + value ;
+            out.textContent = 'Cookie leída: ' + cookieName + ' = ' + value;
         } else {
-            out.textContent = out.textContent +' ________ No se encontró la cookie: ' + cookieName + '. document.cookie = ' + document.cookie;
+            out.textContent = out.textContent + ' ________ No se encontró la cookie: ' + cookieName + '. document.cookie = ' + document.cookie;
         }
     }
 }
@@ -308,6 +308,7 @@ function setCookie(name, value, days) {
     }
     var secure = location.protocol === 'https:' ? '; Secure' : '';
     document.cookie = name + '=' + encodeURIComponent(String(value)) + expires + '; path=/; SameSite=Lax' + secure;
+    console.log("setCookie(): cookie set:", document.cookie);
 }
 
 function leerCookie(nombre) {
@@ -327,4 +328,58 @@ function leerCookie(nombre) {
 function borrarCookie(nombre) {
     document.cookie = nombre + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
 }
+function fbutton_17() {
+    setTimeout(function () {
+        alert('Hola ....');
+    }, 1000);
 
+    //clearTimeout(temporizador);
+}
+var temporizador;
+function cambiar() {
+    temporizador = setInterval(ruedaColores, 100);
+}
+function parar() {
+    clearInterval(temporizador);
+}
+function ruedaColores() {
+    document.getElementById('fake_console_id').style.backgroundColor = getRandomColor();
+}
+function getRandomColor() {
+    var posibles = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += posibles[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+function fbutton_18() {
+    cambiar();
+}
+function fbutton_19() {
+    parar();
+}
+
+//not working?
+window.onerror = function (mensaje, url, lin) {
+    alert(url + " error " + err.description + mensaje + " en la línea " + lin);
+};
+
+function fbutton_20() {
+   try {
+    miFuncion(valor); //Esto genera un error porque la función no existe
+} catch(err) {
+    alert("Se ha producidor un error:" + err.description);
+}
+}
+var stylecount=0;
+function fbutton_21(){
+    if(stylecount%2==0){
+    document.getElementById('style_js_02_id').href = "../css/style.css";
+    fake_console_id.textContent = "Estilo cambiado a style.css";
+} else {
+    document.getElementById('style_js_02_id').href = "../css/style_js_02.css";
+    fake_console_id.textContent = "Estilo cambiado a style_js_02.css";
+}
+stylecount++;
+}
