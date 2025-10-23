@@ -242,7 +242,8 @@
                             <b>alinkColor</b>, contiene el color que se usa en el documento para los enlaces activos.
                             <b>location</b>, cadena que contiene la ubicación de la web.
                             <b>referrer</b>, cadena que contiene la URL de la página que llamo a la página actual.
-                            <b>body</b>, se usa para hacer referencia al cuerpo de la web, todo lo contenido dentro de las etiquetas HTML , solo en modo lectura.
+                            <b>body</b>, se usa para hacer referencia al cuerpo de la web, todo lo contenido dentro de
+                            las etiquetas HTML , solo en modo lectura.
                             <b>lastModified</b>, contiene la fecha de modificación del documento.
                             <b>readyState</b>, estado del objeto, tiene cuatro posibles valores:
                             -Sin cargar.
@@ -315,6 +316,50 @@
                             nos
                             devuelve Google Inc.
                             <b>navigator.vendorSub</b>: nos indica la versión del vendedor (si tiene).
+                        </p>
+                        <p class="p_apuntes_class">
+                            WINDOW.OPEN
+                            left: indica el espacio de separación con el margen izquierdo de la pantalla.
+
+                            top: indica el espacio de separación con el margen superior de la pantalla.
+
+                            height: indica la altura que tendrá la ventana nueva.
+
+                            width: indica la anchura que tendrá la ventana nueva.
+
+                            menubar: si pasamos un valor “yes” la nueva ventana tendrá la barra de menú de navegador.
+
+                            toolbar: si pasamos un valor “yes” la nueva ventana tendrá la barra de herramientas (atrás,
+                            adelante, refrescar, parar…).
+
+                            location: si pasamos un valor “yes” la nueva ventana tendrá la barra de dirección.
+
+                            status: si pasamos un valor “yes” la nueva ventana tendrá una barra inferior de estatu
+                        </p>
+                        <p class="p_apuntes_class">
+                            cookie se compone de los siguientes elementos:
+
+                            nombre y valor: el nombre indica cómo se llamará la cookie y el valor indica que tiene la
+                            cookie.
+
+                            fecha de expiración: se puede asignar una fecha de expiración que indicará hasta cuándo está
+                            vigente dicha cookie; en caso de no indicar fecha, solo será vigente mientras el navegador
+                            esté abierto, luego se borrará; esta fecha tiene un formato concreto que podremos dar
+                            gracias a la función “toGMTString” de la clase “date”.
+
+                            Dominio: indica el dominio para el cual será válida la cookie, hay que tener en cuenta que
+                            se trata de URL completas (como, por ejemplo, www.ejemplo.com), con lo que la cookie no
+                            valdrá para otros dominios dentro de la página como podría ser alumnos.ejemplo.com.
+
+                            Path: indica la ruta dentro del dominio a la cual afecta la cookie; si no se indica, por
+                            defecto coge la ruta raíz “/” aunque podemos indicarle, por ejemplo, “/intranet/alumnos” y
+                            la cookie solo tendrá validez en las páginas dentro de esa ruta.
+
+                            Borrar:
+
+                            No se puede borrar una cookie directamente desde JavaScript para eliminarla debemos volver a
+                            crearla con una fecha de expiración anterior a la fecha y así el navegador detectará que ha
+                            expirado y la borrará.
                         </p>
                     </div>
 </body>

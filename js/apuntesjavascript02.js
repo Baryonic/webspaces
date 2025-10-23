@@ -1,4 +1,35 @@
-function finit() { console.log("finit() : Página cargada correctamente."); }
+function finit() {
+    console.log("finit() : Página cargada correctamente.");
+    // Inicializa listener de teclado para mostrar la tecla pulsada en #fake_console_id
+    try { initKeyListener(); } catch (e) { console.warn("initKeyListener error:", e); }
+}
+
+// Añade un listener global que muestra la tecla pulsada en el div#fake_console_id
+//estudiar remove eventlistener
+function initKeyListener() {
+    if (window._keyListenerInit) return; // evitar duplicados
+    window._keyListenerInit = true;
+
+    function handleKeyDown(e) {
+        var target = document.getElementById("fake_console_id");
+        if (!target) return;
+
+        // Construir combinación (Ctrl/Alt/Shift/Meta) + key
+        var mods = [];
+        if (e.ctrlKey) mods.push("Ctrl");
+        if (e.altKey) mods.push("Alt");
+        if (e.shiftKey) mods.push("Shift");
+        if (e.metaKey) mods.push("Meta");
+        var combo = (mods.length ? mods.join("+") + "+" : "") + e.key;
+
+        // e.code aporta información física de la tecla; fallback a keyCode por compatibilidad
+        var codeInfo = e.code || (typeof e.keyCode === "number" ? ("keyCode=" + e.keyCode) : "");
+
+        target.textContent = "Pressed: " + combo + (codeInfo ? " [" + codeInfo + "]" : "");
+    }
+
+    window.addEventListener("keydown", handleKeyDown, { capture: false });
+}
 function fbutton_01() { document.write("<p>Texto insertado con document.write</p> <br> <h1>PRESS F5</h1>"); }
 function fbutton_02() {
     document.writeln('<div>Texto insertado con <b>document.writeln</b></div>');
@@ -115,7 +146,7 @@ function fbutton_08() {
             try {
                 evt = document.createEvent("MouseEvents");
                 evt.initMouseEvent("mousemove", true, true, window, 0, x, y, x, y, false, false, false, false, 0, null);
-            } catch (_) {}
+            } catch (_) { }
         }
         if (evt) target.dispatchEvent(evt);
     }
@@ -125,7 +156,7 @@ function fbutton_08() {
         var x = Math.round(xStart + (xEnd - xStart) * t);
         dot.style.left = x + "px";
         dot.style.top = y + "px";
-        y=y+1
+        y = y + 1
         dispatchMove(x, y);
         if (t < 1) {
             requestAnimationFrame(step);
@@ -180,7 +211,7 @@ function fbutton_09() {
         if (e.button !== undefined && e.button !== 0) return;
         dragging = true;
         box.style.cursor = "grabbing";
-        try { box.setPointerCapture && box.setPointerCapture(e.pointerId); } catch (_) {}
+        try { box.setPointerCapture && box.setPointerCapture(e.pointerId); } catch (_) { }
         startX = e.clientX;
         startY = e.clientY;
         var rect = box.getBoundingClientRect();
@@ -201,7 +232,7 @@ function fbutton_09() {
         if (!dragging) return;
         dragging = false;
         box.style.cursor = "grab";
-        try { box.releasePointerCapture && box.releasePointerCapture(e.pointerId); } catch (_) {}
+        try { box.releasePointerCapture && box.releasePointerCapture(e.pointerId); } catch (_) { }
     }
 
     box.addEventListener("pointerdown", onPointerDown);
@@ -209,3 +240,89 @@ function fbutton_09() {
     window.addEventListener("pointerup", endDrag);
     window.addEventListener("pointercancel", endDrag);
 }
+var nuevaVentana;
+function abrirVentana() {
+    nuevaVentana = window.open(
+        'http://baryonic.github.io/',
+        'pruebas',
+        'width=305,height=600,status=no,toolbar=no,top=300,left=300'
+    );
+}
+function cerrarVentana() {
+    nuevaVentana.close();
+}
+function fbutton_10() {
+    abrirVentana();
+}
+function fbutton_11() {
+    cerrarVentana();
+}
+function fbutton_12() {
+     if (window.confirm("¿Quiere cambiar el color de fondo a #ffeedd?")) { 
+	            document.body.style.backgroundColor = "#ffeedd";
+	        }
+}
+//revisar
+function fbutton_13() {
+    window.resizeTo("500px","500px");
+    window.moveTo(50,50);
+}
+function fbutton_14() {
+    window.print();
+}
+function fbutton_15() {
+    window.scrollTo(ancho,alto);
+}
+function fbutton_16() {
+    // Crear y leer una cookie de forma robusta
+    // Nota: Las cookies no funcionan en file://; debe abrirse la página vía http(s).
+    if (location.protocol === 'file:') {
+        console.warn('Las cookies no funcionan con file://. Sirve la página vía http(s).');
+        fake_console_id.textContent = 'Las cookies no funcionan con file://. Sirve la página vía http(s).';
+    }
+
+    var cookieName = 'nombre';
+    var cookieValue = 'cookie1';
+
+    setCookie(cookieName, cookieValue, 3650); // ~10 años
+
+    // Leer y mostrar el resultado
+    var value = leerCookie(cookieName);
+    var out = document.getElementById('fake_console_id');
+    if (out) {
+        if (value !== null) {
+            out.textContent = 'Cookie leída: ' + cookieName + ' = ' + value;
+        } else {
+            out.textContent = out.textContent +' ________ No se encontró la cookie: ' + cookieName + '. document.cookie = ' + document.cookie;
+        }
+    }
+}
+
+// Helpers de cookies
+function setCookie(name, value, days) {
+    var expires = '';
+    if (typeof days === 'number') {
+        var date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = '; expires=' + date.toUTCString();
+    }
+    var secure = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = name + '=' + encodeURIComponent(String(value)) + expires + '; path=/; SameSite=Lax' + secure;
+}
+
+function leerCookie(nombre) {
+    var nameEQ = nombre + '=';
+    var parts = document.cookie ? document.cookie.split(';') : [];
+    for (var i = 0; i < parts.length; i++) {
+        var c = parts[i].trim();
+        if (c.indexOf(nameEQ) === 0) {
+            return decodeURIComponent(c.substring(nameEQ.length));
+        }
+    }
+    return null;
+}
+
+function borrarCookie(nombre) {
+    document.cookie = nombre + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+}
+

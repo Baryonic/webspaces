@@ -12,6 +12,11 @@ button {
     display: auto;
     float : left;
 }
+#fake_console_id{
+    background-color: lightgray;
+    min-width: 800px;
+    min-height: 80px;
+}
 #button_01_id{
     background-color: red;
 }
@@ -40,20 +45,44 @@ button {
     background-color: greenyellow;
 }
 #button_10_id{
-    background-color: lightcyan;
+    background-color: greenyellow;
 }
 #button_11_id{
-    background-color: lightcyan;
+    background-color: greenyellow;
 }
 #button_12_id{
-    background-color: lightcyan;
+    background-color: greenyellow;
 }
 #button_13_id{
-    background-color: lightcyan;
+    background-color: yellow;
 }
 #button_14_id{
-    background-color: lightcyan;
+    background-color: greenyellow;
 }
 #button_15_id{
     background-color: lightcyan;
 }
+#button_16_id{
+    background-color: lightcyan;
+}
+#button_17_id{
+    background-color: lightcyan;
+}
+#button_18_id{
+    background-color: lightcyan;
+}
+#button_19_id{
+    background-color: lightcyan;
+}
+#button_20_id{
+    background-color: lightcyan;
+}
+#button_21_id{
+    background-color: lightcyan;
+}
+#button_22_id{
+    background-color: lightcyan;
+}
+#button_23_id{
+    background-color: lightcyan;
+}   
