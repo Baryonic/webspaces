@@ -30,7 +30,7 @@ function cargar(numero) {
 
 function cargarTiempo() {
                 //leemos el archivo.
-                var caja = document.getElementById("caja");
+                var caja = document.getElementById("caja2");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4) {
@@ -74,3 +74,48 @@ function cargarTiempo() {
                     caja && (caja.innerHTML = out.join(""));
                 }
             }
+function cargarEmpleados() {
+    var caja = document.getElementById('caja3');
+    if (!caja) {
+        console.warn("Elemento #caja3 no encontrado");
+    }
+
+    var xhr = new XMLHttpRequest();
+    var url = '../data/empleados.json';
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var data;
+                try {
+                    data = JSON.parse(xhr.responseText);
+                } catch (e) {
+                    if (caja) caja.textContent = 'Error parseando JSON de empleados.json: ' + e.message;
+                    return;
+                }
+                var out = '';
+                if (data && Array.isArray(data.ficha)) {
+                    for (var i = 0; i < data.ficha.length; i++) {
+                        var f = data.ficha[i] || {};
+                        var p = f.parametros || {};
+                        out += 'Nombre: <b>' + (f.nombre || '') + '</b><br/>';
+                        if (p.edad != null) out += 'Edad: ' + p.edad + '<br/>';
+                        if (p.ciudad) out += 'Ciudad: ' + p.ciudad + '<br/>';
+                        if (p.profesion) out += 'Profesion: ' + p.profesion + '<br/>';
+                        if (p.carnet != null) out += 'Carnet: ' + p.carnet + '<br/>';
+                        out += '<br/>';
+                    }
+                } else {
+                    out = 'Estructura de JSON inesperada en empleados.json';
+                }
+                if (caja) caja.innerHTML = out;
+            } else {
+                if (caja) caja.textContent = 'Error (' + xhr.status + ') al cargar ' + url;
+            }
+        }
+    };
+    xhr.onerror = function() {
+        if (caja) caja.textContent = 'Fallo de red al cargar ' + url;
+    };
+    xhr.send(null);
+}           
