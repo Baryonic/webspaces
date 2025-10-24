@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JQuery - each</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        </script>
+        <style>
+            .caja{
+                width:150px;
+                height:150px;
+                position:relative;
+                float:left;
+                border:1px solid #000
+            }
+        </style>
+    </head>
+    <body>
+        <br/><br/>
+        <div class="caja impar" id="caja1">Caja 1</div>
+        <div class="caja par " id="caja2">Caja 2</div>
+        </br></br></br></br></br></br></br></br></br></br></br></br>
+        <a href="">REINICIAR EJEMPLO</a>
+        </br></br>
+        <a href="#" onclick="$('#caja1').hide()">Ocultar caja 1</a></br>
+        <a href="#" onclick="$('#caja1').show()">Mostrar caja 1</a></br>
+        <a href="#" onclick="$('#caja2').fadeOut()">Ocultar por opacidad caja 2</a></br>
+        <a href="#" onclick="$('#caja2').fadeIn()">Mostrar por opacidad caja 2</a></br>
+        <a href="#" onclick="$('#caja1').slideUp()">
+            Ocultar caja 1 desplazmiento viertical inferior</a></br>
+        <a href="#" onclick="$('#caja1').slideDown()">
+            Mostrar caja 1 desplazmiento viertical superior</a></br>
+    </body>
+</html>

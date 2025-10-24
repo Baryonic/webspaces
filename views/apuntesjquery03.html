@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Jquery - each</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+	    <br/><br/>
+	    Selecciona tus deportes favoritos<br/><br/>
+	    Futbol: <input type="checkbox" name="Futbol" value="Futbol"/><br/>
+	    Baloncesto: <input type="checkbox" name="Baloncesto" value="Baloncesto"/><br/>
+	    Balonmano: <input type="checkbox" name="Balonmano" value="Balonmano"/><br/>
+	    Tenis: <input type="checkbox" name="Tenis" value="Tenis"/><br/>
+	    Ciclismo: <input type="checkbox" name="Ciclismo" value="Ciclismo"/><br/>
+	    <br/><br/>
+	    <a href="#" onclick="informacionChecks();return false">Que hay marcado?</a><br/><br/>
+	    <script>
+            function informacionChecks(){
+                $("input:checkbox").each(function() {
+                    if($(this).is(':checked')){
+                        alert($(this).val());
+                    }
+                });
+            }
+	    </script>
+	</body>
+</html>

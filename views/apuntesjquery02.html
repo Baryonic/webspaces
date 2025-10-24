@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jquery - eventos</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        </script>
+        <style>
+            .caja {
+                width: 150px;
+                height: 150px;
+                border: 1px solid #000
+            }
+        </style>
+    </head>
+    <body>
+        <div class="caja impar" id="caja1">Caja 1</div>
+        <br /><br />
+        <form method="post" action="">
+            texto1: <input type="text" name="micaja" id="micaja" />
+            texto2: <input type="text" name="micaja2" id="micaja2" value="33" />
+            texto3: <input type="text" name="micaja3" id="micaja3" />
+            <button onclick="alert('clickean sobre mi, soy boton deformulario')" 
+                id="enviar">Enviar</button>
+        </form>
+        <br /><br />
+        <a href="#" onclick="$('#enviar').click();return false">
+            simular click boton</a>
+        <br /><br />
+        <script>
+            $(document).ready(function () {
+                $("#micaja").blur(function () {
+                    alert('salgo de texto 1');
+                });
+                $("#micaja2").change(function () {
+                    alert('caja 2 cambia');
+                });
+                $("#caja1").hover(function () {
+                    $(this).css("background-color", "red");
+                }, function () {
+                    $(this).css("background-color", "white");
+                }
+                );
+                $("#micaja3").keyup(function (event) {
+                    alert('caja 3, has presionado:'+String.fromCharCode(event.which));
+                });
+                $("#caja1").on("click", function () {
+                    alert("se ha pinchado en la caja");
+                });
+            });
+        </script>
+    </body>
+</html>

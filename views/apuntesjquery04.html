@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Jquery - each</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script>
+	        vector = ['camion','bicicleta','coche','moto'];
+	    </script>
+	</head>
+	<body>
+	    <br/><br/>El vector está compuesto por:<br/>
+	    <script>
+	        $.each(vector,function(key,valor){document.write('<b>'+valor+'</b><br/>');});
+	    </script>
+	    <br/><br/><input type="text" id="buscar" value=""/>
+	    <a href="#" onclick="buscarEnVector($('#buscar').val());return false">
+            existe en el vector?</a><br/><br/>
+	    <script>
+            function buscarEnVector(valor){
+                if($.inArray(valor,vector) !== -1 ){
+                    alert('ESTA!');
+                }else{
+                    alert('NO ESTA!');
+                }
+            }
+	    </script>
+	</body>
+</html>

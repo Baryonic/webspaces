@@ -1,16 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="../css/style_jquery.css" media="all">
     <title>Apuntes jQuery</title>
 </head>
+
 <body>
-            <script>
-            $(document).ready(function () {
-                alert("jQuery cargada");
-            });
-        </script>
+    <h1>jquery</h1>
+    <div>
+        <a href="../index.html">INDEX</a>
+    </div>
+    <div id="fake_console_id">
+
+    </div>
+    <div class="caja impar" id="caja1">Caja 1</div>
+    <div class="caja par clase_fv" id="caja2">Caja 2</div>
+    <div class="caja impar" id="caja3">Caja 3</div>
+    <div class="caja par" id="caja4">Caja 4</div>
+    <div class="caja impar" id="caja5">Caja 5</div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    texto1: <input type="text" name="micaja" />
+    texto2: <input type="text" name="micaja2" />
+    <br/><br/>
+    <a href="">REINICIAR EJEMPLO</a>
+    <br/><br/>
+    <a href="#" onclick="$('#caja1').addClass('claseadd');return false">
+        Añade claseadd a la caja 1</a>
+    <br/><br/>
+    <a href="#" onclick="$('#caja2').append('<br/><b>textoañadido</b>');return false">
+        Añade texto a la caja 2</a>
+    <br/><br/>
+    <a href="#" onclick="$('#caja5').after($('#caja2').clone());return false">
+        Clona caja 2 y la añade despues de la caja 5</a>
+    <br/><br/>
+    <a href="#" onclick="$('#caja3').css('backgroundcolor','#ff0000');return false">
+        Cambia el css de la caja 3 poniendofondo rojo</a><br/><br/>
+    <a href="#" onclick="$('#caja4').remove();return false">
+        Elimina la caja 4</a>
+    <br/><br/>
+    <a href="#" onclick="$('#caja2').removeClass('clase_fv');return false">
+        Elimina la clase q da color verde a la caja 2</a>
+    <br/><br/>
+    <a href="#" onclick="$('input[name=\'micaja\']').val('escribocaja');return false">
+        Escribir el valor de un input (texto1)</a>
+    <br/><br/>
+    <a href="#" onclick="if($('input[name=\'micaja2\']').val()=='rojo'){
+            $('.caja').addClass('clase_rj') };return false">
+        si escribimos en texto 2 rojo actualizamos a rojo el fondo de todas las cajas</a>
+    <br/><br/>
+    <script>
+        $(document).ready(function () {
+            document.getElementById("fake_console_id").innerHTML = "jQuery cargada";
+        });
+        $('div').fadeIn(300,function(){ 
+        document.getElementById("fake_console_id").innerHTML +=
+            "<br/>Todas las cajas han aparecido con fadeIn";
+});
+    </script>
 </body>
+
 </html>
