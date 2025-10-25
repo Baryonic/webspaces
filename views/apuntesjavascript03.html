@@ -8,8 +8,13 @@
         Replace YOUR_API_KEY with a valid API key.
         The script is now loaded asynchronously with a callback function as per best practices.
     -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_thKXbixIAN_iftQqGFEsehaIQEUdTFo&callback=cargarmapa"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_thKXbixIAN_iftQqGFEsehaIQEUdTFo&callback=initMaps"></script>
     <script type="text/JavaScript">
+            function initMaps() {
+                cargarmapa();
+                cargarmapa2();
+            }
+
             function cargarmapa() {
                 var punto = new google.maps.LatLng(
                     41.129220338983,
@@ -28,12 +33,33 @@
                 );
                 //creación del mapa
             }
+            function cargarmapa2() {     
+                var punto = new google.maps.LatLng( 
+                    41.129220338983,  
+                    -3.23365432098762 
+                );     
+                //creación del punto de coordenadas     
+                var opciones = {     
+                    zoom: 6,     
+                    center: punto,     
+                    mapTypeId: google.maps.MapTypeId.ROADMAP     
+                };     
+                //creación de las opciones del mapa     
+                var m=new google.maps.Map(document.getElementById("mapa2"), opciones);     
+                //creación del mapa      
+                var marca = new google.maps.Marker({ 
+                    position: punto, 
+                    map: m, 
+                    title: "Mi marca"     
+                    });    
+                } 
         </script>
     <title>Librer&iacute;as externas de javascript</title>
 </head>
- <body>
+ <body > 
     <h1>Librer&iacute;as externas de javascript</h1>
     <a href="../index.html">Index</a>
-        <div id="mapa" style="width:600px;height:605px"></div>
+        <div id="mapa" style="width:600px;height:605px">mapa 1</div>
+        <div id="mapa2" style="width:600px;height:605px">mapa 2</div>
     </body>
 </html>
