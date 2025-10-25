@@ -18,6 +18,7 @@
                 cargarmapa2();
                 cargarmapa3();
                 cargarmapa4();
+                cargarmapa5();
             }
 
             function cargarmapa() {
@@ -112,7 +113,35 @@
                     }
                 });
             }
-
+        var mapa5; 
+        var mostrar_direcciones; 
+        var servicios_rutas = new google.maps.DirectionsService(); 
+        function cargarmapa5() {     
+            mostrar_direcciones = new google.maps.DirectionsRenderer();     
+            var punto = new google.maps.LatLng( 41.129283, -3.233654 );     
+            var opciones = { 
+                zoom: 7, 
+                center: punto, 
+                mapTypeId: google.maps.MapTypeId.ROADMAP     
+            };     
+            mapa5 = new google.maps.Map(document.getElementById("mapa5"), opciones);     
+            mostrar_direcciones.setMap(mapa);     
+            mostrar_direcciones.setPanel(document.getElementById("ruta")); 
+        } 
+        calcularRuta() {     
+            var partida = document.getElementById("partida").value;     
+            var destino = document.getElementById("destino").value;     
+            var opciones = { 
+                origin:partida,  
+                destination:destino, 
+                travelMode: google.maps.DirectionsTravelMode.DRIVING 
+                //indicamos en este caso que hacemos el viaje en coche/moto     
+            };     
+            servicios_rutas.route(opciones, function(response, status) { 
+                if (status == google.maps.DirectionsStatus.OK) { 
+                    mostrar_direcciones.setDirections(response); }     
+                }); 
+        } 
         </script>
     <title>Librer&iacute;as externas de javascript</title>
 </head>
@@ -120,14 +149,31 @@
 <body>
     <h1>Librer&iacute;as externas de javascript</h1>
     <a href="../index.html">Index</a>
-    <div id="mapa" style="width:600px;height:605px;position: relative;float:left">mapa 1</div>
-    <div id="mapa2" style="width:600px;height:605px;position: relative;float:left">mapa 2</div>
-    <div>puntero marca los datos de la empresa</div>
-    <div id="mapa3" style="width:600px;height:605px;position: relative;float:left">mapa 3</div>
-     <input id="direccion" type="textbox" value="Madrid">
+    <div>
+        <div id="mapa" style="width:600px;height:605px;position: relative;float:left">mapa 1</div>
+        <div id="mapa2" style="width:600px;height:605px;position: relative;float:left">mapa 2</div>
+
+    </div>
+    <div>
+        <div>puntero marca los datos de la empresa</div>
+        <div id="mapa3" style="width:600px;height:605px;position: relative;float:left">mapa 3</div>
+    </div>
+    <div>
+        <input id="direccion" type="textbox" value="Madrid">
         <input type="button" value="Geolocalizar" onclick="geo()">
         <br /><br /><br />
-    <div id="mapa4" style="width:600px;height:605px;position: relative;float:left">mapa 4</div>
+        <div id="mapa4" style="width:600px;height:605px;position: relative;float:left">mapa 4</div>
+
+    </div>
+    <div>
+Partida : <input id="partida" type="textbox" value=""> 
+        Destino : <input id="destino" type="textbox" value=""> 
+        <input type="button" value="Geolocalizar" onclick="calcularRuta()"> 
+        <br /><br /><br />
+        <div id="mapa" 
+            style="position:relative;float:left;width:650px; height:575px"></div>
+        <div id="ruta" style="position:relative;float:left;width:250px; "></div>
+    </div>
 </body>
 
 </html>
