@@ -20,6 +20,7 @@
                 cargarmapa3();
                 cargarmapa4();
                 cargarmapa5();  
+                cargarmapa6();
             }
 
             function cargarmapa() {
@@ -144,6 +145,33 @@
                     mostrar_direcciones.setDirections(response); }     
                 }); 
         } 
+        function cargarmapa6() {
+                var punto = new google.maps.LatLng(
+                    40.415457,
+                    -3.693123
+                );
+                var opciones = {
+                    zoom: 16,
+                    center: punto,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                mapa = new google.maps.Map(document.getElementById("mapa6"), opciones);
+                var opciones_fotos = {
+                    position: punto,
+                    pov: {
+                        //ángulo de rotación respecto al norte de la posición
+                        heading: 34, 
+                        //variación ángulo hacia arriba o hacia debajo de la cámara
+                        pitch: 0, 
+                        //zoom de cercanía de la foto, con 0 alejamiento total
+                        zoom: 1    
+                }
+            };
+            var fotos = new google.maps.StreetViewPanorama(
+                document.getElementById("fotos") ,
+                opciones_fotos);
+                mapa.setStreetView(fotos);
+            }
         </script>
     <title>Librer&iacute;as externas de javascript</title>
 </head>
@@ -151,29 +179,33 @@
 <body>
     <h1>Librer&iacute;as externas de javascript</h1>
     <a href="../index.html">Index</a>
-    <div>
+    <div class="map_container">
         <div id="mapa" style="width:600px;height:605px;position: relative;float:left">mapa 1</div>
         <div id="mapa2" style="width:600px;height:605px;position: relative;float:left">mapa 2</div>
 
     </div>
-    <div>
+    <div class="map_container">
         <div>puntero marca los datos de la empresa</div>
         <div id="mapa3" style="width:600px;height:605px;position: relative;float:left">mapa 3</div>
     </div>
-    <div>
+    <div class="map_container">
         <input id="direccion" type="textbox" value="Madrid">
         <input type="button" value="Geolocalizar" onclick="geo()">
         <br /><br /><br />
         <div id="mapa4" style="width:600px;height:605px;position: relative;float:left">mapa 4</div>
 
     </div>
-    <div>
+    <div class="map_container">
         Partida : <input id="partida" type="textbox" value="benisano">
         Destino : <input id="destino" type="textbox" value="valencia">
         <input type="button" value="Geolocalizar" onclick="calcularRuta()">
         <br /><br /><br />
         <div id="mapa5" style="position:relative;float:left;width:650px; height:575px"></div>
         <div id="ruta" style="position:relative;float:left;width:250px; "></div>
+    </div>
+    <div class="map_container">
+        <div id="mapa6" style="position:relative;float:left;width:450px;height:455px"></div>
+        <div id="fotos" style="position:relative;float:left;width:450px;height:455px"></div>
     </div>
 </body>
 
