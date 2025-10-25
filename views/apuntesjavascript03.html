@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,14 @@
         Replace YOUR_API_KEY with a valid API key.
         The script is now loaded asynchronously with a callback function as per best practices.
     -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_thKXbixIAN_iftQqGFEsehaIQEUdTFo&callback=initMaps"></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_thKXbixIAN_iftQqGFEsehaIQEUdTFo&callback=initMaps"></script>
     <script type="text/JavaScript">
             function initMaps() {
                 cargarmapa();
                 cargarmapa2();
+                cargarmapa3();
+                cargarmapa4();
             }
 
             function cargarmapa() {
@@ -39,27 +43,86 @@
                     -3.23365432098762 
                 );     
                 //creación del punto de coordenadas     
-                var opciones = {     
+                var opciones2 = {     
                     zoom: 6,     
                     center: punto,     
                     mapTypeId: google.maps.MapTypeId.ROADMAP     
                 };     
                 //creación de las opciones del mapa     
-                var m=new google.maps.Map(document.getElementById("mapa2"), opciones);     
+                var m=new google.maps.Map(document.getElementById("mapa2"), opciones2);     
                 //creación del mapa      
                 var marca = new google.maps.Marker({ 
                     position: punto, 
                     map: m, 
                     title: "Mi marca"     
                     });    
-                } 
+                }
+                function cargarmapa3() {
+                var punto = new google.maps.LatLng( 41.129220338983, -3.23365432098762 );     
+                //creación del punto de coordenadas     
+                var opciones3 = {     
+                    zoom: 6,     
+                    center: punto,     
+                    mapTypeId: google.maps.MapTypeId.ROADMAP     
+                };     
+                //creación de las opciones del mapa     
+                var m=new google.maps.Map(document.getElementById("mapa3"), opciones3);     
+                //creación del mapa      
+                var marca = new google.maps.Marker({ 
+                    position: punto, 
+                    map: m     
+                });  
+                var caja = new google.maps.InfoWindow({  
+                    content: 'Empresa: <b>MasterD Formación online</b><br/>\
+                             Teléfono: 000000000<br/>dirección: calle , número y piso'
+                });  
+                google.maps.event.addListener( marca, 'click', function()  {      
+                    caja.open(m,marca);  
+                }); 
+                
+            } 
+            var m;
+            function cargarmapa4() {
+            var punto = new google.maps.LatLng(
+                41.129220338983,
+                -3.23365432098762
+            );
+            //creación del punto de coordenadas
+            var opciones4 = {
+                zoom: 6,
+                center: punto,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            //creación de las opciones del mapa
+            m = new google.maps.Map(document.getElementById("mapa4"), opciones4);
+            //creación del mapa
+            }
+            function geo() {
+                var geocoder = new google.maps.Geocoder();
+                var direccion = $("#direccion").val();
+                geocoder.geocode({'address': direccion}, function(results, status) {
+                    if (status === 'OK') {
+                        m.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                        map: m,
+                        position: results[0].geometry.location});
+                    } else {
+                        alert('No se ha encontrado esa localizacion : ' + status);
+                    }
+                });
+            }
+
         </script>
     <title>Librer&iacute;as externas de javascript</title>
 </head>
- <body > 
+
+<body>
     <h1>Librer&iacute;as externas de javascript</h1>
     <a href="../index.html">Index</a>
-        <div id="mapa" style="width:600px;height:605px">mapa 1</div>
-        <div id="mapa2" style="width:600px;height:605px">mapa 2</div>
-    </body>
+    <div id="mapa" style="width:600px;height:605px;position: relative;float:left">mapa 1</div>
+    <div id="mapa2" style="width:600px;height:605px;position: relative;float:left">mapa 2</div>
+    <div id="mapa3" style="width:600px;height:605px;position: relative;float:left">mapa 3</div>
+    <div id="mapa4" style="width:600px;height:605px;position: relative;float:left">mapa 4</div>
+</body>
+
 </html>
