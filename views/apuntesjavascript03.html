@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_js_03.css" id="style_js_03_id" media="all">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- 
         NOTE: You need to provide your own Google Maps API key for this to work.
@@ -115,8 +116,9 @@
             }
         var mapa5; 
         var mostrar_direcciones; 
-        var servicios_rutas = new google.maps.DirectionsService(); 
+        var servicios_rutas; 
         function cargarmapa5() {     
+            servicios_rutas = new google.maps.DirectionsService(); 
             mostrar_direcciones = new google.maps.DirectionsRenderer();     
             var punto = new google.maps.LatLng( 41.129283, -3.233654 );     
             var opciones = { 
@@ -125,7 +127,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP     
             };     
             mapa5 = new google.maps.Map(document.getElementById("mapa5"), opciones);     
-            mostrar_direcciones.setMap(mapa);     
+            mostrar_direcciones.setMap(mapa5);     
             mostrar_direcciones.setPanel(document.getElementById("ruta")); 
         } 
         function calcularRuta() {     
