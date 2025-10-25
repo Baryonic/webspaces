@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        NOTE: You need to provide your own Google Maps API key for this to work.
+        Replace YOUR_API_KEY with a valid API key.
+        The script is now loaded asynchronously with a callback function as per best practices.
+    -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_thKXbixIAN_iftQqGFEsehaIQEUdTFo&callback=cargarmapa"></script>
+    <script type="text/JavaScript">
+            function cargarmapa() {
+                var punto = new google.maps.LatLng(
+                    41.129220338983,
+                    -3.23365432098762
+                );
+                //creación del punto de coordenadas
+                var opciones = {
+                    zoom: 6,
+                    center: punto,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                //creación de las opciones del mapa
+                var m=new google.maps.Map(
+                    document.getElementById("mapa"),
+                    opciones
+                );
+                //creación del mapa
+            }
+        </script>
+    <title>Librer&iacute;as externas de javascript</title>
+</head>
+ <body>
+    <h1>Librer&iacute;as externas de javascript</h1>
+    <a href="../index.html">Index</a>
+        <div id="mapa" style="width:600px;height:605px"></div>
+    </body>
+</html>
