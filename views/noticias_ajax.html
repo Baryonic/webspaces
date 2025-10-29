@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed via AJAX</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            margin: 0;
+            padding: 20px;
+        }
+        #news-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #1877f2;
+            border-bottom: 2px solid #e4e6eb;
+            padding-bottom: 10px;
+        }
+        .news-item {
+            border-bottom: 1px solid #e4e6eb;
+            padding: 15px 0;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-item h2 {
+            font-size: 1.25em;
+            margin: 0 0 10px;
+        }
+        .news-item h2 a {
+            text-decoration: none;
+            color: #050505;
+        }
+        .news-item h2 a:hover {
+            text-decoration: underline;
+        }
+        .news-item p {
+            margin: 0;
+            color: #65676b;
+        }
+        #loading {
+            text-align: center;
+            font-size: 1.2em;
+            color: #65676b;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="news-container">
+        <h1>Latest News</h1>
+        <div id="loading">Loading news...</div>
+        <div id="feed"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // The Google News RSS feed URL
+            const rssUrl = "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en";
+            
+            // Use the rss2json API to convert the RSS feed to JSON and handle CORS
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+            const feedContainer = document.getElementById("feed");
+            const loadingIndicator = document.getElementById("loading");
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Check if the API call was successful
+                    if (data.status !== "ok") {
+                        throw new Error("Failed to fetch RSS feed from the API.");
+                    }
+
+                    loadingIndicator.style.display = "none";
+                    const items = data.items;
+
+                    if (!items || items.length === 0) {
+                        feedContainer.innerHTML = "<p>No news items found. The feed may be empty.</p>";
+                        return;
+                    }
+
+                    items.forEach(item => {
+                        // Extract title, link, and description from each item
+                        const title = item.title;
+                        const link = item.link;
+                        // The description often contains HTML, which we can use
+                        const description = item.description;
+
+                        // Create the HTML for the news item
+                        const newsItem = document.createElement("div");
+                        newsItem.className = "news-item";
+
+                        const titleElement = document.createElement("h2");
+                        const linkElement = document.createElement("a");
+                        linkElement.href = link;
+                        linkElement.target = "_blank"; // Open in a new tab
+                        linkElement.textContent = title;
+                        titleElement.appendChild(linkElement);
+
+                        const descriptionElement = document.createElement("p");
+                        // Setting innerHTML to render the HTML from the description
+                        descriptionElement.innerHTML = description;
+
+                        newsItem.appendChild(titleElement);
+                        newsItem.appendChild(descriptionElement);
+
+                        feedContainer.appendChild(newsItem);
+                    });
+                })
+                .catch(error => {
+                    // Display an error message if the fetch fails
+                    loadingIndicator.textContent = "Failed to load news feed. Please try again later.";
+                    console.error("There was a problem with the fetch operation:", error);
+                });
+        });
+    </script>
+
+</body>
+</html>

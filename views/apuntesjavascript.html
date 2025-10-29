@@ -663,6 +663,78 @@
                     directionsRenderer.setDirections: este método es el que crea las indicaciones de la ruta en modo
                     texto a partir del resultado de “route”.
                 </p>
+                <p class="p_apuntes_class">
+                    <b>calendario</b><br />
+                    <b>header</b>: No permite definir los elementos superiores del calendario, por ejemplo, los botones
+                    de navegación,
+                    el título del calendario y las opciones de visualización, posibles valores:
+                    <b>Title</b>: texto que contiene el mes / semana / día actual.
+                    <b>Prev</b>: botón para mover el calendario de vuelta un mes / semana / día.
+                    <b>Next</b>: botón para mover el calendario hacia adelante un mes / semana / día.
+                    <b>prevYear</b>: botón para mover el calendario de nuevo en el año.
+                    <b>nextYear</b>: botón para adelantar el calendario un año.
+                    <b>today</b>: para mover el calendario al mes / semana / día actual.
+                    <b>Vistas posibles</b>: nos permite definir la vista que el usuario puede poner en el calendario.
+                    <b>month</b> - mes.
+                    <b>basicWeek</b> - semana.
+                    <b>basicDay</b> - día.
+                    <b>agendaWeek</b> - semana en agenda (horas).
+                    <b>agendaDay</b> - día en agenda (horas).
+                    <b>listYear</b> - Lista de eventos sin calendario (vista anual).
+                    <b>listMonth</b> - Lista de eventos sin calendario (vista mensual).
+                    <b>listWeek</b> - Lista de eventos sin calendario (vista semanal).
+                    <b>listDay</b> - Lista de eventos sin calendario (vista diaria).<br />
+                    <b>defaultDate</b>: Nos permite indicar en que día inicial parte la vista del calendario, si no
+                    indicamos ninguno usa la
+                    librería momento para establecer el día actual.<br />
+                    <b>navLinks</b>: Nos permite definir si queremos que los nombres de los días sean clickeables; es
+                    decir si podemos
+                    pinchar en ellos, por defecto al pinchar nos abrirá el día en el que pinchemos, por defecto el valor
+                    es false, poniéndolo a true conseguimos esta funcionalidad.<br />
+                    <b>editable</b>: Nos permite determinar si se pueden modificar los eventos del calendario. Esto
+                    determina si los
+                    eventos se pueden arrastrar y cambiar de tamaño. Por defecto el valor es false.<br />
+                    <b>eventLimit</b>: Limita el número de eventos que se muestran en un día (celda del día). Cuando hay
+                    más eventos de los
+                    que entran por altura, se muestra un enlace que se parece a "+X más". Un valor de false (el valor
+                    predeterminado) mostrará todos los eventos tal cual. Un valor de true limitará el número de eventos
+                    a la altura de la celda de día.<br />
+                    <b>events</b>: Esta nos permite definir los eventos que aparecerán en el calendario, hay dos formas
+                    de definir,
+                    mediante un array que se le pasa como parámetro o como datos sacados de una ruta y que son servidos
+                    en JSON.
+                    Por array:
+                    Por url suele ser común generarlas desde una base de datos con PHP, Java o el lenguaje de
+                    programación que se use.<br />
+                    <b>defaultView</b>: Nos permite definir la vista inicial que tendrá el calendario, por defecto si la
+                    dejamos vacía será
+                    la mensual.<br />
+                    <b>eventRender</b>: Este evento se lanza cuando se procesa un evento, suele usarse para modificar
+                    por css algún estilo o
+                    lanzar alguna alerta.<br />
+                    <b>dayClick</b>: Se lanza cuando el usuario hace click en un día por ejemplo suele usarse para
+                    mostrar una ventana
+                    para que se rellene un formulario con los datos necesarios para crear una cita o entrada en el
+                    calendario.<br />
+                    <b>eventClick</b>: Se lanza cuando se pincha sobre un evento del calendario, por lo general se usa
+                    para ver los
+                    detalles del evento o mostrar un formulario para modificar el evento.<br />
+                    <b>eventDrop</b>: Se lanza cuando se arrastra un evento de calendario a un día distinto al que
+                    estaba indicado, la
+                    función nos devuelve un objeto evento, otro objeto delta, una función para devolver el evento al
+                    punto de partida (revertFunc), el objeto jsEvent y la vista
+
+                </p>
+                <p class="p_apuntes_class">
+                    google.charts.load('current', {'packages':['corechart'], 'language': 'es'});
+                    google.charts.setOnLoadCallback ( función )
+
+                    Esta instrucción es muy parecida al 'ready' de Ajax, lo que nos hace es la llamada a la función
+                    JavaScript propia que creemos para cargar los gráficos una vez este cargada la web.
+                    arrayToDataTable
+                    var chart = new google.visualization.PieChart($('chart'));
+                    chart.draw (datos, opciones);
+                </p>
             </div>
 </body>
 

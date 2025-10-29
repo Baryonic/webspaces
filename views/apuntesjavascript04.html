@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ejemplo b&aacute;sico AJAX Jquery</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		</script>
+		<!-- Replaced local file with CDN -->
+		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+	</head>
+	<body >
+		<div style="width:800px;height:600px; position:relative; border: 1px solid #000;" id="calendar">
+	        </div>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var calendarEl = document.getElementById('calendar');
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					initialView: 'dayGridMonth',
+					locale: 'es',
+					headerToolbar: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'dayGridMonth,dayGridWeek,dayGridDay'
+					},
+					defaultDate: '2025-09-12',
+					navLinks: true,
+					editable: true,
+					eventLimit: true,
+					events: [
+						{
+						title: 'graduacion',
+						start: '2025-12-31'
+						},
+						{
+						title: 'examen mdtc',
+						start: '2025-11-01',
+						end: '2025-11-02'
+						},
+						{
+						title: 'futuro',
+						start: '2025-12-11',
+						end: '2025-12-13'
+						},
+						{
+						title: 'Trabajo',
+						start: '2026-01-01T12:00:00'
+						},
+						{
+						title: 'Ver video (pincha para ver)',
+						url: 'https://www.youtube.com/',
+						start: '2025-12-28'
+						}
+					]
+				});
+				calendar.render();
+			});
+		</script>
+	</body>
+</html>
