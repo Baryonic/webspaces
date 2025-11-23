@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <script type="text/javascript">
+	        function validar(formulario) {
+	            var valido = "s";
+	            var mensaje = "";
+                    if (formulario.nombre.value == "") {
+                        valido = "n";
+                        mensaje = mensaje + "El campo nombre no puede estar vacío";
+                    }
+	            edad = parseInt(formulario.edad.value);
+	            if (isNaN(edad)) {
+	                valido = "n";
+	                mensaje = mensaje + "El campo edad debe ser numérico";
+	            }
+	            var cp = /^[0-9]{5,5}$/;
+	            if (!cp.test(formulario.codpostal.value)) {
+	                valido = "n";
+	                mensaje = mensaje + "Codigo postal no valido";
+	            }
+                    var email = /^(.+@.+..+)$/;
+                    if (!email.test(formulario.email.value)) {
+                        valido = "n";
+                        mensaje = mensaje + "Email no valido";
+                    }
+                    if (!validarFecha(formulario.nacimiento.value)) {
+                        valido = "n";
+                        mensaje = mensaje + "Fecha de nacimiento no válida";
+                    }
+	            dni = formulario.dni.value;
+                    var letras = ["T", "R", "W", "A", "G", "M", "Y",
+                                "F", "P", "D", "X", "B", "N", "J",
+                                "Z", "S", "Q", "V", "H", "L", "C",
+                                "K", "E", "T" 
+                            ];
+	            if (!/^d{8}[A-Z]$/.test(dni)) {
+	                valido = "n";
+	                mensaje = mensaje + "DNI introducido no valido";
+	            } else {
+	                if (dni.charAt(8) != letras[dni.substring(0, 8) % 23]) {
+	                    valido = "n";
+	                    mensaje = mensaje + "DNI introducido no valido";
+	                }
+	            }
+                    if (valido == "s") {
+                        formulario.submit();
+                    } else {
+                        alert(mensaje);
+                    }
+                }
+	        function validarFecha(fecha_pasada) {
+                    var Fecha = new String(fecha_pasada); // Crea un string
+                    var RealFecha = new Date(); // Para sacar la fecha de hoy
+                    var Ano = new String(
+                        Fecha.substring(Fecha.lastIndexOf("-") + 1, Fecha.length)
+                    );
+                    var Mes = new String(
+                        Fecha.substring(Fecha.indexOf("-") + 1, Fecha.lastIndexOf("-"))
+                    );
+                    var Dia = new String(Fecha.substring(0, Fecha.indexOf("-")));
+                    if (isNaN(Ano) || Ano.length < 4 || parseFloat(Ano) < 1900) {
+                        return false;
+                    }
+                    if (isNaN(Mes) || parseFloat(Mes) < 1 || parseFloat(Mes) > 12) {
+                        return false;
+                    }
+                    if (isNaN(Dia) || parseInt(Dia) < 1 || parseInt(Dia) > 31) {
+                        return false;
+                    }
+                    if (Mes == 4 || Mes == 6 || Mes == 9 || Mes == 11 || Mes == 2) {
+                        if ((Mes == 2 && Dia > 28) || Dia > 30) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+	    </script>
+	</head>
+	<body>
+            <form name="pruebas" method="POST" action="http://www.masterd.es">
+                Nombre: <input type="text" name="nombre" size="30" /><br />
+                Edad: <input type="text" name="edad" size="10" /><br />
+                Codigo postal: <input type="text" name="codpostal" size="10" />
+                <br />
+                Email: <input type="text" name="email" size="40" /><br />
+                Fecha de nacimiento:
+                <input type="text" name="nacimiento" size="20" /><br />
+                DNI: <input type="text" name="dni" size="20" /><br />
+                <input type="button" name="envío" value="enviar" onClick="validar(this.form);" />
+            </form>
+	</body>
+</html>
